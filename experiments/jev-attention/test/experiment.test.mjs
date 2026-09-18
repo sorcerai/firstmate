@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { profiles, fakeResponse } from './helpers.mjs';
 import { prepare } from '../lib/prepare.mjs';
 import { parseResponse } from '../lib/response.mjs';
-import { interpret, contextView } from '../lib/policy.mjs';
+import { interpret } from '../lib/policy.mjs';
 for (const {profile,fixtures} of profiles) {
   test(profile.id+': contract projects permitted fields and excludes labels',()=>{
     const packet=structuredClone(fixtures[0]);packet.private_note='DO_NOT_EXPORT';packet.state.private_note='DO_NOT_EXPORT';

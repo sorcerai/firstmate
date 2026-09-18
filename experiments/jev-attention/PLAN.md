@@ -25,7 +25,7 @@ No due date or autonomous task was scheduled.
 - `profile.json`: explicit input contract and semantic questions.
 - `fixtures.json`: independent synthetic smoke cases with separate reference labels.
 - Packaged runtime: request projection, preflight guards, strict typed response parsing, bounded transport, abstention and secret-free advisory receipts.
-- `test/`: per-profile offline behavior and cross-profile transport tests.
+- `test/`: offline behavior and transport tests.
 
 ## Preserved boundaries
 
@@ -44,7 +44,7 @@ No due date or autonomous task was scheduled.
    No new remote repo, sibling-runtime import or framework migration.
 4. Capture trusted host state using the existing evidence interface.
    Run the preflight guard before any model call.
-   Bind results to the exact input hash and current snapshot/candidate/turn identifiers as applicable.
+   Bind results to the exact input hash.
 5. Run the package tests and current repository changed-path tests.
    Demonstrate disabled behavior and zero effect on existing gates, permissions or execution.
 6. Obtain independent review through an authorized route.

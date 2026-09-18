@@ -3,16 +3,14 @@ import {prepare} from './lib/prepare.mjs';import {evaluate,Budget} from './lib/c
 const ROOT=new URL('./',import.meta.url);
 function readJson(path){if(statSync(path).size>2*1024*1024)throw Error('input_too_large');return JSON.parse(readFileSync(path,'utf8'));}
 function parse(args){
- const out={};const flags=new Set(['--all','--live','--allow-reviewed-data']);const valued=new Set(['--profile','--max-calls','--input','--per-profile']);const seen=new Set();
+ const out={};const flags=new Set(['--live','--allow-reviewed-data']);const valued=new Set(['--profile','--max-calls','--input']);const seen=new Set();
  for(let i=0;i<args.length;i++){
   const k=args[i];if(seen.has(k)||(!flags.has(k)&&!valued.has(k)))throw Error('invalid_arguments');seen.add(k);
   if(flags.has(k))out[k]=true;else{if(i+1>=args.length||args[i+1].startsWith('--'))throw Error('invalid_arguments');out[k]=args[++i];}
  }
- if(out['--all']&&out['--profile'])throw Error('invalid_arguments');
  if(out['--input']&&!out['--profile'])throw Error('invalid_arguments');
  if(out['--allow-reviewed-data']&&(!out['--input']||!out['--live']))throw Error('invalid_arguments');
  if(out['--max-calls']&&!out['--live'])throw Error('invalid_arguments');
- if(out['--per-profile']&&(!out['--live']||!/^\d+$/.test(out['--per-profile'])||Number(out['--per-profile'])<1||Number(out['--per-profile'])>100))throw Error('invalid_arguments');
  if(out['--live']&&(!out['--max-calls']||!/^\d+$/.test(out['--max-calls'])))throw Error('invalid_arguments');
  return out;
 }
@@ -41,7 +39,7 @@ export async function runCLI(args,{root=ROOT,env=process.env,fetchImpl}={}){
     prepare(profile,fixture);
     if(seenIds.has(fixture.id))throw Error('invalid_input');seenIds.add(fixture.id);
    }
-   plans.push({profile,fixtures:live&&!flags['--input']?fixtures.slice(0,Number(flags['--per-profile']??1)):fixtures});
+   plans.push({profile,fixtures});
   }
  }catch{return {exitCode:2,report:{...empty,mode:live?'live':'offline',blockedReason:'invalid_input'}};}
  const reports=[],results=[],allFixtures=[];let stopped=false,invalid=false;

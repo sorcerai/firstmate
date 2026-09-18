@@ -1,5 +1,5 @@
 {
-  "name": "jev-portfolio-shadow",
+  "name": "jev-attention",
   "private": true,
   "type": "module",
   "engines": {
@@ -7,6 +7,6 @@
   },
   "scripts": {
     "test": "node --test test/*.test.mjs",
-    "check": "node cli.mjs --all"
+    "check": "node cli.mjs"
   }
 }
