@@ -1,0 +1,46 @@
+{
+  "version": "0.1.0",
+  "created_at": "2026-09-18",
+  "mode": "shadow",
+  "new_experiment_count": 1,
+  "current_github_source_verified": true,
+  "experiments": [
+    {
+      "id": "attention",
+      "title": "Worker progress and attention",
+      "primary_repo": "sorcerai/firstmate",
+      "related_repos": [
+        "sorcerai/hermes-agent"
+      ],
+      "path": "experiments/attention",
+      "integration_status": "integrated_opt_in_disabled_by_default",
+      "local_status": "offline_verified",
+      "pull_request": {
+        "scope": "attention",
+        "branch": "experiment/jev-attention",
+        "title": "experiment: add opt-in Jev attention shadow evaluation",
+        "status": "not_opened",
+        "url": null,
+        "dependencies": [],
+        "dependency_status": "verified_none_required"
+      }
+    }
+  ],
+  "retained_gauntlet": null,
+  "local_build_status": "offline_verified",
+  "live_status": "not_run",
+  "github_status": "pr_not_opened",
+  "pull_request_policy": {
+    "updated_at": "2026-09-18",
+    "source": "Explicit user correction: keep PRs separate for different things",
+    "unit": "one_experiment_per_pull_request",
+    "bundle_different_experiments_in_same_repo": false,
+    "separate_branches": true,
+    "separate_tests_review_and_rollback": true,
+    "shared_prerequisite": "Only when required by verified current source, use a separate minimal prerequisite PR; do not mix feature experiments into it.",
+    "cross_repo_change": "Create separately linked PRs per repository for the same experiment only where actual changes are required.",
+    "dependency_policy": "Start from the current default branch, or explicitly name the prerequisite PR and base branch. Never include unrelated experiment commits.",
+    "automatic_merge_or_deploy": false,
+    "github_prs_created": false
+  }
+}

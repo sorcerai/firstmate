@@ -1,0 +1,12 @@
+{
+  "name": "jev-portfolio-shadow",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "check": "node cli.mjs --all"
+  }
+}
