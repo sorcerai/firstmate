@@ -1,0 +1,21 @@
+✔ attention: contract projects permitted fields and excludes labels (1.706834ms)
+✔ attention: does not mutate or retain caller input (1.091875ms)
+✔ attention: missing required field fails before inference (0.397208ms)
+✔ attention: rejects duplicate evidence IDs (0.253084ms)
+✔ attention: rejects malformed evidence and top-level ID (0.115667ms)
+✔ attention: rejects oversized input and false numeric/boolean types (0.179833ms)
+✔ attention: classification must be explicit (0.136167ms)
+✔ attention: fixture attention-positive remains advisory (0.6945ms)
+✔ attention: fixture attention-negative remains advisory (0.212416ms)
+✔ attention: fixture attention-ambiguous remains advisory (0.164916ms)
+✔ attention: fixture attention-injection remains advisory (0.103083ms)
+✔ standalone export: disabled means zero provider calls (0.199333ms)
+✔ standalone export: typed mocked response remains non-gating (36.571084ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 107.425041

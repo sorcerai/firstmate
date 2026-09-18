@@ -1,0 +1,8 @@
+{
+  "mode": "live",
+  "providerRequestsStarted": 0,
+  "modelQualityMeasured": false,
+  "productionChanged": false,
+  "githubPRs": [],
+  "blockedReason": "missing_api_key"
+}
