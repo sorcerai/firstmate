@@ -1,0 +1,94 @@
+{
+  "id": "attention",
+  "version": "0.1.0",
+  "title": "Worker progress and attention",
+  "target": {
+    "primary_repo": "sorcerai/firstmate",
+    "related_repos": [
+      "sorcerai/hermes-agent"
+    ],
+    "current_source_verified": false,
+    "mapping_status": "prior_context_only"
+  },
+  "objective": "Detect unsupported completion and wasted worker effort before a human interruption.",
+  "authority": "advisory_only",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "task": {
+        "type": "string",
+        "min": 1,
+        "max": 4000
+      },
+      "receipts": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "min": 1,
+          "max": 4000
+        },
+        "max": 20
+      },
+      "recent_actions": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "min": 1,
+          "max": 4000
+        },
+        "max": 20
+      },
+      "completion_claim": {
+        "type": "string",
+        "min": 1,
+        "max": 4000
+      },
+      "evidence": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "id"
+            },
+            "text": {
+              "type": "string",
+              "min": 1,
+              "max": 4000
+            }
+          }
+        },
+        "max": 12
+      }
+    }
+  },
+  "question_spec": {
+    "mode": "static",
+    "questions": {
+      "next": {
+        "type": "choice",
+        "instructions": "Using the task, recent actions and receipts, which advisory response is warranted? Do not treat a completion claim as a receipt. This is not a permission or agent-control decision.",
+        "criteria": {
+          "continue": "Evidence shows useful progress or appropriately qualified completion.",
+          "request_evidence": "A material claim lacks the required execution evidence.",
+          "review_loop": "Repeated actions appear ineffective or irrelevant.",
+          "human_review": "A meaningful ambiguity requires operator judgment.",
+          "unknown": "There is not enough information."
+        }
+      }
+    }
+  },
+  "protected_boundaries": [
+    "No process control, task dispatch, or notification is executed.",
+    "Credential errors and process liveness remain deterministic."
+  ],
+  "success_metrics": [
+    "Reviewer agreement",
+    "False interruptions",
+    "Missed stalled runs",
+    "Full-task cost"
+  ],
+  "threshold": 0.9,
+  "threshold_calibrated": false,
+  "max_request_bytes": 40000
+}

@@ -493,6 +493,14 @@
       "audience": "operator-current"
     },
     {
+      "path": "experiments/jev-attention/PLAN.md",
+      "audience": "maintainer-architecture"
+    },
+    {
+      "path": "experiments/jev-attention/README.md",
+      "audience": "maintainer-architecture"
+    },
+    {
       "path": "skills/stow/SKILL.md",
       "audience": "public-product"
     }
